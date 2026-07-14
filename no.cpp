@@ -25,5 +25,10 @@ struct No_DE{
 struct Node {
     Node* esq;
     Node* dir;
-    int  
+    int valor;
+    Node (Node* esq, Node* dir, int valor){
+        this->esq = esq;
+        this->dir = dir;
+        this->valor = valor;
+    }; 
 };

@@ -61,10 +61,14 @@ class SinglyLinkedList {
 
     void insereFim (int v){
         No* novo = new No (v,nullptr);
-        if(vazia()){head = novo;}
+        if(vazia()){
+            head = novo;
+            trail = novo;}
         else{
             trail->next = novo;
+            trail = novo;
         }
+            tam = tam + 1;
     }
 
     int insere(int v, int idx){
