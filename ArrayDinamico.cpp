@@ -27,7 +27,7 @@ class ArrayDinamico{
         }
 
         int Adicionar(int valor, int posicao){
-            if(posicao < 0 || posicao > tam){return erro;}
+            if(posicao < 0 || posicao > tam){return -1;}
             if(tam == capacidade){Expandir();}
 
             for (int i = tam; i > posicao; i--){
@@ -39,7 +39,7 @@ class ArrayDinamico{
         }
 
         int Remover (int posicao){
-            if(posicao >= tam){return erro;}
+            if(posicao >= tam){return -1;}
             for(int i = posicao; i < tam-1; i++){
                 dados[i] = dados[i+1];
             }
@@ -48,12 +48,12 @@ class ArrayDinamico{
         }
         
         int Get(int posicao){
-            if(posicao >= tam){return erro;}
+            if(posicao >= tam){return -1;}
             return dados[posicao];
         }
 
         int Set(int valor, int posicao){
-            if(posicao >= tam) {return erro;}
+            if(posicao >= tam) {return -1;}
             dados[posicao] = valor;
             return 0;
         }

@@ -69,7 +69,7 @@ class SinglyLinkedList {
     }
 
     int insere(int v, int idx){
-        if(idx<0 || idx > tam){return erro;}
+        if(idx<0 || idx > tam){return -1;}
         if(idx == 0){ insereInicio(v); return 0;}
         else if(idx == tam){ insereFim(v); return 0;}
         else{
