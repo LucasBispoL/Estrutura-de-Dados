@@ -168,12 +168,3 @@ ArrayDinamico bucket_sort(ArrayDinamico& a){
         
     }
 }
-
-int main(){ 
-    ArrayDinamico a(10);
-    int entrada;
-    for(int i = 0; i<10; i++){
-        a.Adicionar(scanf("%i",&entrada), i);
-    }
-    merge_sort(a);
-}
