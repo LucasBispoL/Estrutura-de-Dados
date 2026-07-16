@@ -1,6 +1,5 @@
-#include <iostream>
-using namespace std;
-
+#ifndef NO
+#define NO
 struct No {
     int valor;
     No* next;
@@ -32,3 +31,5 @@ struct Node {
         this->valor = valor;
     }; 
 };
+
+#endif

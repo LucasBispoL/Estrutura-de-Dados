@@ -1,6 +1,5 @@
-#include <iostream>
-using namespace std;
-
+#ifndef ARRAYDINAMICO
+#define ARRAYDINAMICO
 
 class ArrayDinamico{ 
     private:
@@ -62,3 +61,5 @@ class ArrayDinamico{
 
         int Size(){ return capacidade; }
 };
+
+#endif

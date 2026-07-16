@@ -1,12 +1,13 @@
-#include "ArrayDinamico.cpp"
-#include "CircularlyLinkedList.cpp"
-#include "heap.cpp"
-#include "merge.cpp"
-#include "no.cpp"
-#include "SinglyLinkedList.cpp"
-#include "sorts.cpp"
-#include "sorts2.cpp"
-#include "hashtable.cpp"
+#include "ArrayDinamico.h"
+#include "CircularlyLinkedList.h"
+#include "heap.h"
+#include "merge.h"
+#include "no.h"
+#include "SinglyLinkedList.h"
+#include "sorts.h"
+#include "sorts2.h"
+#include "hashtable.h"
+#include <iostream>
 using namespace std;
 
 int main(){

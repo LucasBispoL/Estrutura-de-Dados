@@ -1,7 +1,7 @@
-#include <iostream>
-#include "no.cpp"
-using namespace std;
+#ifndef CLIST
+#define CLIST
 
+#include "no.h"
 class CircularlyLinkedList{
         private:
             No* trail;
@@ -65,3 +65,5 @@ class CircularlyLinkedList{
             }
 
     };
+
+#endif

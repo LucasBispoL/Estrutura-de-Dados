@@ -1,13 +1,20 @@
-#include <iostream>
-#include "ArrayDinamico.cpp"
+#ifndef SORTS2
+#define SORTS2
+
+#include "no.h"
+#include "ArrayDinamico.h"
+#include "CircularlyLinkedList.h"
+#include "DoublyLinkedList.h"
+#include "SinglyLinkedList.h"
 
 using namespace std;
 
 void insertion_sort (ArrayDinamico& a){
-    for (int i = 1; i < a.Numel() - 1; i++){
+    for (int i = 1; i < a.Numel(); i++){
         int k = a.Get(i);
         int j = i - 1;
-        while(j>0 && k < a.Get(j)){
+
+        while(j>=0 && k < a.Get(j)){
             a.Set(a.Get(j), j+1);
             j = j-1;
         }
@@ -15,29 +22,57 @@ void insertion_sort (ArrayDinamico& a){
     }
 }
 
-void selection_sort(ArrayDinamico& a){
-    for (int i = 0; i < a.Numel()-1; i++){
+void insertion_sort (SinglyLinkedList& l){
+    for (int i = 1; i < l.size(); i++){
+        int k = l.no(i)->valor;
+        int j = i - 1;
+
+        while(j>=0 && k < l.no(j)->valor){
+            j = j-1;
+        }
+        l.insere(k, j+1);
+        }
+    }
+
+void insertion_sort (CircularlyLinkedList& c){
+    for (int i = 1; i < c.size(); i++){
+        for(int j = 0; j <= i; j++){ 
+            c.girar();
+            }
+
+    int k = c.primeiro()->valor;
+    int j = i-1;
+    
+    while(j>= 0 && k < )
+    }
+
+}
+
+
+ArrayDinamico selection_sort(ArrayDinamico& a){
+    for (int i = 0; i < a.Numel(); i++){
         int min = a.Get(i);
         int posicao_min = i;
-        for(int j=i+1; j < a.Numel()-1; j++){
+        for(int j=i+1; j < a.Numel(); j++){
             if(a.Get(j)<min){
                 min = a.Get(j);
                 posicao_min = j;
             }
         }
-        //"troque a[i] e a[pos_min]"
+
         if(posicao_min != i){
             int aux = a.Get(i);
             a.Set(a.Get(posicao_min), i);
             a.Set(aux, posicao_min);
         }
     }
+    return a;
 }
 
-void bubble_sort (ArrayDinamico& a){
+ArrayDinamico bubble_sort (ArrayDinamico& a){
     for(int i = 2; i < a.Numel(); i++){
         bool trocou = false;
-        for(int j = 0; j < a.Numel()-1;i++){
+        for(int j = 0; j < a.Numel()-1;j++){
             if(a.Get(j) > a.Get(j+1)){
                 int aux = a.Get(j);
                 a.Set(a.Get(j+1), j);
@@ -50,19 +85,19 @@ void bubble_sort (ArrayDinamico& a){
             }
         }
     }
+    return a;
 }
 
 // merge pra função merge_sort
 
 ArrayDinamico merge(ArrayDinamico& a, ArrayDinamico& b){
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    int m = a.Numel();
-    int n = b.Numel();
+    int i = 0, j = 0, k = 0;
+    int m = a.Numel(), n = b.Numel();
+
     ArrayDinamico c(m + n);
+    
     while(i<m && j<n){
-        if(a.Get(i)<=b.Get(j)){
+        if(a.Get(i) <= b.Get(j)){
             c.Adicionar(a.Get(i), k);
             i++;
         }
@@ -70,6 +105,7 @@ ArrayDinamico merge(ArrayDinamico& a, ArrayDinamico& b){
             c.Adicionar(b.Get(j), k);
             j++;
         }
+        k++;
     }
     if(i>=m){
         while(j<n){
@@ -79,7 +115,7 @@ ArrayDinamico merge(ArrayDinamico& a, ArrayDinamico& b){
     }
     else{
         while(i<m){
-            c.Adicionar(b.Get(i), k);
+            c.Adicionar(a.Get(i), k);
             i++; k++;
         }
     }
@@ -88,28 +124,25 @@ ArrayDinamico merge(ArrayDinamico& a, ArrayDinamico& b){
 
 ArrayDinamico merge_sort(ArrayDinamico& a){
     int n = a.Numel();
-    if(n=1){
+    if(n<=1){
         return a;
     }
     else{
-        /*
-            meio <- (n-1)/2 arredondado pra baixo
-            b <- merge_sort (a[0...meio])
-            c <- merge_sort (a[meio+1..n-1])
-            retorne merge(b,c)
-            
-        */
-        int meio = (n-1)/2;
-        ArrayDinamico b(n/2);
-        ArrayDinamico c(n/2);
-        for(int i = 0; i <= meio;i++){
-            b.Adicionar(a.Get(i), i);
+        int meio = n/2;
+        ArrayDinamico esquerda(meio);
+        ArrayDinamico direita(n-meio);
+        
+        for(int i = 0; i < meio;i++){
+            esquerda.Adicionar(a.Get(i), i);
         }
-        merge_sort(b);
-        for(int i = n; i>= meio; i--){
-            c.Adicionar(a.Get(i), i);
+        
+        for(int i = meio; i < n; i++){
+            direita.Adicionar(a.Get(i), i-meio);
         }
-        merge_sort(c);
+
+        ArrayDinamico b = merge_sort(esquerda);
+        ArrayDinamico c = merge_sort(direita);
+        
         return merge(b,c);
     }
 }
@@ -129,15 +162,16 @@ int partition (ArrayDinamico& a, int l, int r){
     return k;
 }
 
-void quick_sort (ArrayDinamico& a, int l, int r){
+ArrayDinamico quick_sort (ArrayDinamico& a, int l, int r){
     if(r>l){
         int k = partition(a,l,r);
         quick_sort(a,l,k-1);
         quick_sort(a,k+1,r);
     }
+    return a;
 }
 
-void counting_sort (ArrayDinamico& a, int k){
+ArrayDinamico counting_sort (ArrayDinamico& a, int k){
     ArrayDinamico f (k+1);
     for (int i = 0; i <= k+1; i++){
         f.Adicionar(0, i);
@@ -155,6 +189,7 @@ void counting_sort (ArrayDinamico& a, int k){
         s.Adicionar(a.Get(i), f.Get(a.Get(i)-1));
         f.Set(a.Get(i)-1, a.Get(i));
     }
+    return a;
 }
 
 void radix_sort(ArrayDinamico& a){
@@ -163,8 +198,33 @@ void radix_sort(ArrayDinamico& a){
     }
 }
 
-ArrayDinamico bucket_sort(ArrayDinamico& a){
-    for(int i = a.Numel(); i<0; i--){
-        
+void bucket_sort(ArrayDinamico& a){
+    int n = a.Numel();
+
+    SinglyLinkedList* l = new SinglyLinkedList[n];
+    
+    int max = a.Get(0);
+    for(int i = 0; i<n; i++){
+        if(a.Get(i) > max) {max = a.Get(i);}
     }
-}
+
+    if(max == 0){return;}
+
+    for(int i = 0; i < n; i++){
+        int idx = (n-1) * a.Get(i) / max;
+        l[idx].insereInicio(a.Get(i));
+    }
+
+    int idx_a = 0;
+    for(int i = 0; i < n; i++){
+        insertion_sort(l[i]);
+        No* atual = l[i].primeiro();
+        while(atual!= nullptr){
+            a.Set(atual->valor, idx_a);
+            idx_a++;
+            atual = atual->next;
+        }
+    }
+    }
+
+#endif

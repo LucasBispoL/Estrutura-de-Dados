@@ -1,7 +1,8 @@
-#include "ArrayDinamico.cpp"
-#include "no.cpp"
-#include <iostream>
-using namespace std;
+#ifndef HEAP
+#define HEAP
+
+#include "ArrayDinamico.h"
+#include "no.h"
 
 /*
     Pai,esq,dir etc aponta pra i
@@ -57,3 +58,4 @@ class heap{
         }
 
 }
+#endif

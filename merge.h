@@ -1,8 +1,6 @@
-#include <iostream>
-using namespace std;
+#ifndef MERGE
+#define MERGE
 
-/* 
-*/
 void merge (int a[], int l, int m, int r){
     int nL = m-l+1, nR = r-m;
     int l[nL], r[nR];
@@ -36,3 +34,4 @@ void merge_sort (int a[], int l, int r){
     }
 
 }
+#endif

@@ -1,6 +1,7 @@
-#include <iostream>
-#include "no.cpp"
-using namespace std;
+#ifndef SLIST
+#define SLIST
+
+#include "no.h"
 
 class SinglyLinkedList {
     private: 
@@ -116,3 +117,5 @@ class SinglyLinkedList {
         return n;
     }
     };
+
+    #endif

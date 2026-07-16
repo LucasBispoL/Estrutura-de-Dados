@@ -1,6 +1,7 @@
+#ifndef HASHTABLE
+#define HASHTABLE
+#include "SinglyLinkedList.h"
 #include <iostream>
-#include "SinglyLinkedList.cpp"
-using namespace std;
 
 class hashTable{
     private:
@@ -62,3 +63,4 @@ class hashTable{
 
 
 };
+#endif

@@ -1,6 +1,7 @@
-#include <iostream>
-#include "no.cpp"
-using namespace std;
+#ifndef DLIST
+#define DLIST
+
+#include "no.h"
 
 
 class DoublyLinkedList{
@@ -63,3 +64,5 @@ class DoublyLinkedList{
         }
         
 };
+
+#endif
