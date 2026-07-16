@@ -2,9 +2,6 @@
 #include "no.cpp"
 using namespace std;
 
-const int erro = -1;
-const int aceita = 0;
-
 class CircularlyLinkedList{
         private:
             No* trail;

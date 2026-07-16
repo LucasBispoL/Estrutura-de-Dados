@@ -6,9 +6,6 @@
 #include "SinglyLinkedList.cpp"
 #include <math.h>
 using namespace std;
-const int erro = -1;
-const int aceita = 0;
-using namespace std;
 
 void insertion_sort (ArrayDinamico& a){
     for (int i = 1; i < a.Numel(); i++){

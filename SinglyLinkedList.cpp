@@ -2,9 +2,6 @@
 #include "no.cpp"
 using namespace std;
 
-const int erro = -1;
-const int aceita = 0;
-
 class SinglyLinkedList {
     private: 
         No* head;
@@ -73,13 +70,13 @@ class SinglyLinkedList {
 
     int insere(int v, int idx){
         if(idx<0 || idx > tam){return erro;}
-        if(idx == 0){ insereInicio(v); return aceita;}
-        else if(idx == tam){ insereFim(v); return aceita;}
+        if(idx == 0){ insereInicio(v); return 0;}
+        else if(idx == tam){ insereFim(v); return 0;}
         else{
             No* prev = no(idx-1);
             prev->next = new No(v, prev->next);
             tam = tam+1;
-            return aceita;
+            return 0;
         }
     }
 

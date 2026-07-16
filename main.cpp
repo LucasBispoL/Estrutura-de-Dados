@@ -13,7 +13,7 @@ int main(){
     int tam = 3;
     hashTable H (tam);
     int sair = 0;
-    cout << "-_ (/Owo)/ Programa de Hash Table _-" << endl;
+    cout << "-_ Programa de Hash Table _-" << endl;
     
     while (sair == 0){
         cout << "Insira um numero: ";

@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-const int erro = -1;
-const int aceita = 0;
 
 class ArrayDinamico{ 
     private:
@@ -37,7 +35,7 @@ class ArrayDinamico{
             }
             dados[posicao] = valor;
             tam++;
-            return aceita;
+            return 0;
         }
 
         int Remover (int posicao){
@@ -46,7 +44,7 @@ class ArrayDinamico{
                 dados[i] = dados[i+1];
             }
             tam = tam-1;
-            return aceita;
+            return 0;
         }
         
         int Get(int posicao){
@@ -57,7 +55,7 @@ class ArrayDinamico{
         int Set(int valor, int posicao){
             if(posicao >= tam) {return erro;}
             dados[posicao] = valor;
-            return aceita;
+            return 0;
         }
 
         int Numel(){ return tam; }
