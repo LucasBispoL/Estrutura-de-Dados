@@ -4,7 +4,6 @@
 #include "merge.h"
 #include "no.h"
 #include "SinglyLinkedList.h"
-#include "sorts.h"
 #include "sorts2.h"
 #include "hashtable.h"
 #include <iostream>

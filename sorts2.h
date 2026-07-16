@@ -33,20 +33,7 @@ void insertion_sort (SinglyLinkedList& l){
         l.insere(k, j+1);
         }
     }
-
-void insertion_sort (CircularlyLinkedList& c){
-    for (int i = 1; i < c.size(); i++){
-        for(int j = 0; j <= i; j++){ 
-            c.girar();
-            }
-
-    int k = c.primeiro()->valor;
-    int j = i-1;
     
-    while(j>= 0 && k < )
-    }
-
-}
 
 
 ArrayDinamico selection_sort(ArrayDinamico& a){

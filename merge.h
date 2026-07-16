@@ -2,35 +2,48 @@
 #define MERGE
 
 void merge (int a[], int l, int m, int r){
-    int nL = m-l+1, nR = r-m;
-    int l[nL], r[nR];
-    for(int i = 0; i<nL-1; i++){
-        r[i] = a[m+1+i];
-        i=0;
-        int j=0;
-        while(i<nL && j<nR){
-            if(r[j] <l<i){
-                a[l] = r[j];
-                j++;
-            }
-            else{
-                a[l] = l[i];
-                i++;
-            }
-            l++;
-        }
-        while (j<nL){
-            a[l++] = r[j++];
-        }
+    int nL = m-l, nR = r-m;
+
+    int* eT = new int[nL];
+    int* dT = new int[nR];
+
+    for(int i = 0; i<nL; i++){
+        eT[i] = a[l+i];
     }
+    for(int j=0; j< nR; j++){
+        dT[j] = a[m+1+j];
+    }
+    int i = 0, j = 0, k = l;
+
+    while (i < nL && j < nR){
+        if(eT[i] <= dT[j]){
+            a[k] = eT[i];
+            i++;
+        }
+        else{
+            a[k] = dT[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i<nL){
+        a[k++] = eT[i++];
+    }
+    while(j<nR){
+        a[k++] = dT[j++];
+    }
+
+    delete[] eT;
+    delete[] dT;
 }
 
 void merge_sort (int a[], int l, int r){
     if(l<r){
         int m = (l+r)/2;
-        merge_sort(a[], l, m);
-        merge_sort(a[], m+1, r);
-        merge(a[],l,m,r);
+        merge_sort(a, l, m);
+        merge_sort(a, m+1, r);
+        merge(a,l,m,r);
     }
 
 }

@@ -17,21 +17,21 @@ class heap{
         int dir; // Filho direito do nó i
         
         public:
-        int pai(int i){
+        int Pai(int i){
             return (i+1)/2 - 1;
-        };
+        }
 
-        int esq (int i){
+        int Esq (int i){
             return 2*(i+1) - 1;
-        };
+        }
         
-        int dir (int i){
+        int Dir (int i){
             return 2*(i+1);
-        };
+        }
 
         void heapify (int i){
-            int e = &esq(i);
-            int d = &dir(i);
+            int e = &Esq(i);
+            int d = &Dir(i);
             int maior = i;
             
             if(e <= tam && valor[e] > valor [i]){
@@ -52,10 +52,11 @@ class heap{
         heap h (int a[], int n){
             tam = n;
             valor = a;
-            for(int i = pai(n-1); i<=0; i--){
+            for(int i = Pai(n-1); i<=0; i--){
                 heapify(i);
             }
         }
 
-}
+};
+
 #endif
