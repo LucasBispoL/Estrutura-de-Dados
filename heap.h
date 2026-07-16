@@ -30,8 +30,8 @@ class heap{
         }
 
         void heapify (int i){
-            int e = &Esq(i);
-            int d = &Dir(i);
+            int e = Esq(i);
+            int d = Dir(i);
             int maior = i;
             
             if(e <= tam && valor[e] > valor [i]){
